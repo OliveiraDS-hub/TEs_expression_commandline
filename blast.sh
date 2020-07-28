@@ -2,10 +2,6 @@
 
 set -e
 
-direc="/home/stagiaire/oliveira/santa_maria/full_length"
-blastn="/home/stagiaire/softwares/ncbi-blast-2.10.0+/bin/blastn"
-db_rosette="/home/stagiaire/oliveira/santa_maria/full_length/rosette"
-
 # BLASTn: Assembled transcripts against TEs insertions
 
 ##The same code was used to both "TE and genes expression" and "TE transcripts analysis"
@@ -13,7 +9,7 @@ db_rosette="/home/stagiaire/oliveira/santa_maria/full_length/rosette"
 for transcripts in "$direc/"*.fasta; do
 	name="${transcripts%.*}"
 	output="${name}"blast_result.ods
-	$blastn -query "$transcripts" -db "$db_rosette/"tes_insertions -max_target_seqs 1 -outfmt 6 -out "$output"
+	$blastn -query "$transcripts" -db "$dir_tes/"tes_insertions -max_target_seqs 1 -outfmt 6 -out "$output"
 done
 	
 mkdir blast_results
